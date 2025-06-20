@@ -34,6 +34,8 @@ export const getByIdHandler = async (event) => {
   try {
     const data = await ddbDocClient.send(new GetCommand(params));
     var item = data.Item;
+    // Cambiossss
+    console.log("Item retrieved:", item);
   } catch (err) {
     console.log("Error", err);
   }
