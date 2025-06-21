@@ -127,7 +127,7 @@ jobs:
             sam list stack-outputs \
               --stack-name ${TESTING_STACK_NAME} \
               --region ${TESTING_REGION} \
-              --output json |  jq -r ".[0].OutputValue"
+              --output json | jq -r '.[] | select(.OutputKey=="WebEndpoint") | .OutputValue'
             echo EOF
           } >> "$GITHUB_OUTPUT"
 
