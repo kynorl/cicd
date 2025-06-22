@@ -66,7 +66,7 @@ jobs:
         run: |
           sam package \
             --region ${TESTING_REGION} \
-            --s3-bucket ${{ secrets.SAM_BUCKET }} \
+            --resolve-s3 \
             --output-template-file packaged-testing.yaml
 
       - name: Almacenar plantilla de testeo compilada para el siguiente paso
@@ -79,7 +79,7 @@ jobs:
         run: |
           sam package \
             --region ${PROD_REGION} \
-            --s3-bucket ${{ secrets.SAM_BUCKET }} \
+            --resolve-s3 \
             --output-template-file packaged-prod.yaml
 
       - name: Almacenar plantilla de producción compilada para el siguiente paso
